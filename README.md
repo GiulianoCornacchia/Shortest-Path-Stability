@@ -97,6 +97,5 @@ python compute_sps.py -c pisa --lat 43.715906 --lng 10.401866 -i sps_pisa -f 1 -
 ## Repository Structure
 
 - `compute_sps.py`: Main script to compute SPS metrics.
-- `compute_sps_city.py`: Batch callable function for cities.
 - `sps_utils.py`: Utility functions for sampling, path generation, and stability computation.
 - `notebooks/`: Jupyter notebooks for running and visualizing experiments.
