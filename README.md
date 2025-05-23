@@ -11,6 +11,10 @@
 
 <sup>1</sup> ISTI-CNR, Pisa, Italy  
 
+<p align="center">
+  <img src="images/example_sps.gif" alt="Shortest Path Stability Example" width="300"/>
+</p>
+
 ____
 
 📄 *Article coming soon*
