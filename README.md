@@ -64,40 +64,31 @@ We use:
 
 ---
 
-## Example Usage
+## Parameters Table for `compute_sps.py`
 
+| Short | Long           | Description                                                                                 | Required | Default                        |
+|-------|----------------|---------------------------------------------------------------------------------------------|----------|--------------------------------|
+| `-c`  | `--city`       | Name of the city used to load the corresponding road network.                              | ✅       | —                              |
+| `-i`  | `--identifier` | Unique experiment identifier used for result folder naming.                                | ✅       | —                              |
+|       | `--lat`        | Latitude of the city center.                                                                | ✅       | —                              |
+|       | `--lng`        | Longitude of the city center.                                                               | ✅       | —                              |
+| `-f`  | `--rfrom`      | Starting radius (in km) for radial sampling.                                               | ❌       | `1`                            |
+| `-t`  | `--rto`        | Ending radius (in km) for radial sampling.                                                 | ❌       | `30`                           |
+| `-s`  | `--rstep`      | Step size (in km) for radii used in sampling.                                              | ❌       | `1`                            |
+| `-n`  | `--ncircles`   | Number of evenly spaced samples per circle (i.e., OD pairs per radius).                    | ❌       | `36`                           |
+| `-d`  | `--thdist`     | Minimum distance (in km) between sampled points.                                           | ❌       | `0.5`                          |
+| `-p`  | `--perturbations` | Dash-separated list of displacement boundaries in meters (e.g., `0-100-200`). Intervals are defined between each pair. | ❌ | `0-100-200-300-400-500` |
+|       | `--nsectors`   | Number of angular sectors for destination perturbation (per displacement ring).           | ❌       | `8`                            |
+| `-r`  | `--saveroutes` | Whether to save the generated routes (1 = Yes, 0 = No).                                    | ❌       | `0`                            |
+|       | `--njobs`      | Number of parallel jobs for computation.  
+
+---
+
+Example Command:
 ```bash
-python compute_sps.py \
-  --city pisa \
-  --lat 43.715906 --lng 10.401866 \
-  --identifier sps_pisa \
-  --rfrom 1 --rto 10 --rstep 1 \
-  --ncircles 6 \
-  --thdist 0.5 \
-  --perturbations 0-100-200-300 \
-  --nsectors 8 \
-  --saveroutes 1 \
-  --njobs 4
+python compute_sps.py -c pisa --lat 43.715906 --lng 10.401866 -i sps_pisa -f 1 -t 10 -s 1 -n 6 -d 0.5 -p 0-100-200-300 --nsectors 8 -r 1 --njobs 4
 ```
 
----
-
-## Parameters
-
-| Argument           | Description                                                                                 | Required | Default         |
-|--------------------|---------------------------------------------------------------------------------------------|----------|-----------------|
-| `--city`           | Name of the city                                                                            | ✅       | —               |
-| `--lat`, `--lng`   | Latitude and longitude of the city center                                                   | ✅       | —               |
-| `--identifier`     | Unique ID for output folder                                                                 | ✅       | —               |
-| `--rfrom`, `--rto`, `--rstep` | Radial range and step in km for sampling                                      | ✅       | —               |
-| `--ncircles`       | Number of samples per circle                                                                | ✅       | —               |
-| `--thdist`         | Minimum distance in km between sampled points                                               | ✅       | —               |
-| `--perturbations`  | Dash-separated boundaries for displacement intervals (e.g., `0-100-200`) → `[[0,100],[100,200]]` | ❌       | `0-100-200-300-400-500` |
-| `--nsectors`       | Angular sectors to sample within each perturbation ring                                     | ❌       | 8               |
-| `--saveroutes`     | Save computed paths (1 = yes, 0 = no)                                                       | ❌       | 0               |
-| `--njobs`          | Number of parallel workers                                                                  | ❌       | 5               |
-
----
 
 ## Repository Structure
 
